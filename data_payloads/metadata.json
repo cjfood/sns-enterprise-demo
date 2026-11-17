@@ -1,0 +1,134 @@
+{
+  "SELLIN_M": {
+    "size_kb": 6761.7,
+    "file": "SELLIN_M.json"
+  },
+  "DAILY_DATA": {
+    "size_kb": 38.4,
+    "file": "DAILY_DATA.json"
+  },
+  "GT_DAILY_SI": {
+    "size_kb": 229.3,
+    "file": "GT_DAILY_SI.json"
+  },
+  "GT_DAILY_SO": {
+    "size_kb": 229.2,
+    "file": "GT_DAILY_SO.json"
+  },
+  "PROD_TREE": {
+    "size_kb": 2067.2,
+    "file": "PROD_TREE.json"
+  },
+  "CHAN_TREE": {
+    "size_kb": 177.2,
+    "file": "CHAN_TREE.json"
+  },
+  "GT_TREE": {
+    "size_kb": 14459.3,
+    "file": "GT_TREE.json"
+  },
+  "GT_SI": {
+    "size_kb": 37.3,
+    "file": "GT_SI.json"
+  },
+  "GT_STOCK": {
+    "size_kb": 1975.1,
+    "file": "GT_STOCK.json"
+  },
+  "GT_ASO_M": {
+    "size_kb": 421.7,
+    "file": "GT_ASO_M.json"
+  },
+  "GT_MCP_M": {
+    "size_kb": 85.1,
+    "file": "GT_MCP_M.json"
+  },
+  "GT_NVBH_M": {
+    "size_kb": 2259.8,
+    "file": "GT_NVBH_M.json"
+  },
+  "GT_NVBH_MCP_M": {
+    "size_kb": 349.9,
+    "file": "GT_NVBH_MCP_M.json"
+  },
+  "GT_SALESMAN_ACTIVE": {
+    "size_kb": 464.9,
+    "file": "GT_SALESMAN_ACTIVE.json"
+  },
+  "GT_L3M": {
+    "size_kb": 309.6,
+    "file": "GT_L3M.json"
+  },
+  "GT_ROUTE_SUMMARY": {
+    "size_kb": 492.2,
+    "file": "GT_ROUTE_SUMMARY.json"
+  },
+  "GT_CUST_ROUTES": {
+    "size_kb": 411.0,
+    "file": "GT_CUST_ROUTES.json"
+  },
+  "GT_CUST_PROD_SALES": {
+    "size_kb": 205.8,
+    "file": "GT_CUST_PROD_SALES.json"
+  },
+  "GT_VISIT_MTD": {
+    "size_kb": 8.9,
+    "file": "GT_VISIT_MTD.json"
+  },
+  "GT_VISIT_DAILY": {
+    "size_kb": 9.6,
+    "file": "GT_VISIT_DAILY.json"
+  },
+  "MT_TREE": {
+    "size_kb": 991.1,
+    "file": "MT_TREE.json"
+  },
+  "MT_STORE_DATA": {
+    "size_kb": 17.5,
+    "file": "MT_STORE_DATA.json"
+  },
+  "MT_DAILY_DATA": {
+    "size_kb": 46.9,
+    "file": "MT_DAILY_DATA.json"
+  },
+  "B2B_TREE": {
+    "size_kb": 527.0,
+    "file": "B2B_TREE.json"
+  },
+  "KR_TREE": {
+    "size_kb": 532.7,
+    "file": "KR_TREE.json"
+  },
+  "DIM_GEO_HIER": {
+    "size_kb": 4.0,
+    "file": "DIM_GEO_HIER.json"
+  },
+  "DIM_PROD_HIER": {
+    "size_kb": 2.5,
+    "file": "DIM_PROD_HIER.json"
+  },
+  "DIM_COMM_HIER": {
+    "size_kb": 3.7,
+    "file": "DIM_COMM_HIER.json"
+  },
+  "TARGET_SELLIN": {
+    "size_kb": 189.8,
+    "file": "TARGET_SELLIN.json"
+  },
+  "TARGET_SELLOUT": {
+    "size_kb": 273.6,
+    "file": "TARGET_SELLOUT.json"
+  },
+  "GT_SUBCHAN_M": {
+    "size_kb": 152.0,
+    "file": "GT_SUBCHAN_M.json"
+  },
+  "GT_FREEZER_DATA": {
+    "size_kb": 47.2,
+    "file": "GT_FREEZER_DATA.json"
+  },
+  "GT_STANDEE_DATA": {
+    "size_kb": 46.2,
+    "file": "GT_STANDEE_DATA.json"
+  }
+}
