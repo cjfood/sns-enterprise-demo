@@ -1891,7 +1891,8 @@
 
 
 
-                        elSoAch.title = 'Không có chỉ tiêu Target cho kỳ chọn';
+                        const isSubProdFiltered = (state.prodPh2 && state.prodPh2 !== 'ALL') || (state.prodSku && state.prodSku !== 'ALL');
+                        elSoAch.title = isSubProdFiltered ? 'Chỉ tiêu kế hoạch Target của công ty chỉ thiết lập đến cấp Nhóm hàng (PH1), chưa phân bổ cấp PH2/SKU' : 'Không có chỉ tiêu Target cho kỳ chọn';
 
 
 
@@ -1907,7 +1908,11 @@
 
 
 
-                    elSoTgtSub.innerText = totalTargetSo > 0 ? ('Tgt: ' + formatBnVn(totalTargetSo)) : 'Tgt: -';
+                    const isSubProdFiltered = (state.prodPh2 && state.prodPh2 !== 'ALL') || (state.prodSku && state.prodSku !== 'ALL');
+                    elSoTgtSub.innerText = totalTargetSo > 0 ? ('Tgt: ' + formatBnVn(totalTargetSo)) : (isSubProdFiltered ? 'Tgt: N/A' : 'Tgt: -');
+                    if (isSubProdFiltered && totalTargetSo === 0) {
+                        elSoTgtSub.title = 'Chỉ tiêu kế hoạch Target của công ty chỉ thiết lập đến cấp Nhóm hàng (PH1), chưa phân bổ cấp PH2/SKU';
+                    }
 
 
 
@@ -2103,7 +2108,8 @@
 
 
 
-                        elSiAch.title = 'Không có chỉ tiêu Target cho kỳ chọn';
+                        const isSubProdFiltered = (state.prodPh2 && state.prodPh2 !== 'ALL') || (state.prodSku && state.prodSku !== 'ALL');
+                        elSiAch.title = isSubProdFiltered ? 'Chỉ tiêu kế hoạch Target của công ty chỉ thiết lập đến cấp Nhóm hàng (PH1), chưa phân bổ cấp PH2/SKU' : 'Không có chỉ tiêu Target cho kỳ chọn';
 
 
 
@@ -2119,7 +2125,11 @@
 
 
 
-                    elSiTgtSub.innerText = totalTargetSi > 0 ? ('Tgt: ' + formatBnVn(totalTargetSi)) : 'Tgt: -';
+                    const isSubProdFiltered = (state.prodPh2 && state.prodPh2 !== 'ALL') || (state.prodSku && state.prodSku !== 'ALL');
+                    elSiTgtSub.innerText = totalTargetSi > 0 ? ('Tgt: ' + formatBnVn(totalTargetSi)) : (isSubProdFiltered ? 'Tgt: N/A' : 'Tgt: -');
+                    if (isSubProdFiltered && totalTargetSi === 0) {
+                        elSiTgtSub.title = 'Chỉ tiêu kế hoạch Target của công ty chỉ thiết lập đến cấp Nhóm hàng (PH1), chưa phân bổ cấp PH2/SKU';
+                    }
 
 
 
@@ -26957,7 +26967,7 @@
 
 
 
-                    wb.creator = "SNS Enterprise Platform";
+                    wb.creator = "CJ Foods Vietnam";
 
 
 
@@ -27013,7 +27023,7 @@
 
 
 
-                    titleRow.getCell(1).value = "CÔNG TY TNHH SNS ENTERPRISE VIỆT NAM - " + title.toUpperCase();
+                    titleRow.getCell(1).value = "CÔNG TY TNHH CJ FOODS VIỆT NAM - " + title.toUpperCase();
 
 
 
@@ -28085,7 +28095,7 @@
 
 
 
-                    const titleText = "CÔNG TY TNHH SNS ENTERPRISE VIỆT NAM - BÁO CÁO PHÂN CẤP THỰC THI TUYẾN BÁN HÀNG (RTM ROUTE)";
+                    const titleText = "CÔNG TY TNHH CJ FOODS VIỆT NAM - BÁO CÁO PHÂN CẤP THỰC THI TUYẾN BÁN HÀNG (RTM ROUTE)";
 
 
 
@@ -29061,7 +29071,7 @@
 
 
 
-                    ws['A1'] = ExcelStyler.createCell("CÔNG TY TNHH SNS ENTERPRISE VIỆT NAM - " + title.toUpperCase(), 's', ExcelStyler.getTitleStyle());
+                    ws['A1'] = ExcelStyler.createCell("CÔNG TY TNHH CJ FOODS VIỆT NAM - " + title.toUpperCase(), 's', ExcelStyler.getTitleStyle());
 
 
 
@@ -35393,7 +35403,7 @@
 
 
 
-                    wb.creator = "SNS Enterprise Platform";
+                    wb.creator = "CJ Foods Vietnam";
 
 
 
@@ -35481,7 +35491,7 @@
 
 
 
-                    titleRow.getCell(1).value = "CÔNG TY TNHH SNS ENTERPRISE VIỆT NAM - DANH SÁCH CHI TIẾT ĐIỂM ĐẶT TỦ ĐÔNG KÊNH GT";
+                    titleRow.getCell(1).value = "CÔNG TY TNHH CJ FOODS VIỆT NAM - DANH SÁCH CHI TIẾT ĐIỂM ĐẶT TỦ ĐÔNG KÊNH GT";
 
 
 
@@ -35513,7 +35523,7 @@
 
 
 
-                    guideRow.getCell(1).value = "Kỳ báo cáo: " + periodStr + " | Tổng số điểm đặt tủ: " + exportList.length.toLocaleString() + " thiết bị | Trích xuất từ hệ thống quản trị tủ đông SNS Enterprise Platform.";
+                    guideRow.getCell(1).value = "Kỳ báo cáo: " + periodStr + " | Tổng số điểm đặt tủ: " + exportList.length.toLocaleString() + " thiết bị | Trích xuất từ hệ thống quản trị tủ đông CJ Foods Vietnam.";
 
 
 
@@ -41624,7 +41634,7 @@
 
 
 
-                    wb.creator = "SNS Enterprise Platform";
+                    wb.creator = "CJ Foods Vietnam";
 
 
 
@@ -41712,7 +41722,7 @@
 
 
 
-                    titleRow.getCell(1).value = "CÔNG TY TNHH SNS ENTERPRISE VIỆT NAM - DANH SÁCH CHI TIẾT ĐIỂM ĐẶT STANDEE (KỆ SẮT) KÊNH GT";
+                    titleRow.getCell(1).value = "CÔNG TY TNHH CJ FOODS VIỆT NAM - DANH SÁCH CHI TIẾT ĐIỂM ĐẶT STANDEE (KỆ SẮT) KÊNH GT";
 
 
 
@@ -41744,7 +41754,7 @@
 
 
 
-                    guideRow.getCell(1).value = "Kỳ báo cáo: " + periodStr + " | Tổng số điểm đặt kệ: " + exportList.length.toLocaleString() + " thiết bị | Trích xuất từ hệ thống quản trị POSM Standee SNS Enterprise Platform.";
+                    guideRow.getCell(1).value = "Kỳ báo cáo: " + periodStr + " | Tổng số điểm đặt kệ: " + exportList.length.toLocaleString() + " thiết bị | Trích xuất từ hệ thống quản trị POSM Standee CJ Foods Vietnam.";
 
 
 

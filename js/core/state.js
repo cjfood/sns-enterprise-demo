@@ -709,6 +709,15 @@
 
 
 
+            // Target kế hoạch doanh số của công ty chỉ thiết lập đến cấp Nhóm hàng (PH1) và Storage.
+            // Khi người dùng lọc sâu đến cấp PH2 hoặc SKU, không áp dụng chỉ tiêu target cấp PH1
+            // để tránh sai lệch tỷ lệ % đạt kế hoạch (chỉ tiêu cấp PH2/SKU chưa phân bổ).
+            if ((state.prodPh2 && state.prodPh2 !== 'ALL') || (state.prodSku && state.prodSku !== 'ALL')) {
+                return false;
+            }
+
+
+
             if (state.prodStorage !== 'ALL' && d.storage && d.storage !== state.prodStorage) return false;
 
 
