@@ -1589,21 +1589,24 @@
 
 
 
+                function formatChannelTargetHtml(targetVal, sellinVal) {
+                    if (targetVal > 0) {
+                        const achVal = (sellinVal / targetVal * 100);
+                        const achStyle = getTargetColorStyle(achVal);
+                        return '<span class="text-[9.5px] font-medium text-slate-500 font-mono-num leading-tight truncate max-w-full">' + t('lbl_target') + ': ' + formatBnVn(targetVal) + '</span>' +
+                               '<span class="text-[10px] font-bold font-mono-num leading-tight mt-0.5 whitespace-nowrap" style="' + achStyle + '">' + t('lbl_achv') + ' ' + achVal.toFixed(1) + '%</span>';
+                    } else {
+                        return '<span class="text-[10px] font-medium text-slate-400 font-mono-num leading-tight">' + t('lbl_target') + ': N/A</span>';
+                    }
+                }
+
                 // Card 5: GT
                 const elChanGt = document.getElementById('dash-kpi-chan-gt');
                 if (elChanGt) elChanGt.innerText = formatBnVn(gtSellin);
                 const elChanGtShare = document.getElementById('dash-kpi-chan-gt-share');
                 if (elChanGtShare) elChanGtShare.innerText = t('lbl_share') + ': ' + gtShare.toFixed(1) + '%';
                 const elChanGtTarget = document.getElementById('dash-kpi-chan-gt-target');
-                if (elChanGtTarget) {
-                    if (gtTarget > 0) {
-                        const achVal = (gtSellin / gtTarget * 100);
-                        const achStyle = getTargetColorStyle(achVal);
-                        elChanGtTarget.innerHTML = t('lbl_target') + ': ' + formatBnVn(gtTarget) + ' (<span style="' + achStyle + '">' + t('lbl_achv') + ' ' + achVal.toFixed(1) + '%</span>)';
-                    } else {
-                        elChanGtTarget.innerText = 'Target: N/A';
-                    }
-                }
+                if (elChanGtTarget) elChanGtTarget.innerHTML = formatChannelTargetHtml(gtTarget, gtSellin);
                 setChanGrowth('dash-kpi-chan-gt', gtSellin, gtSellinLY, gtYtd26, gtYtd25);
                 setChanMom('dash-kpi-chan-gt', gtMomMtdPct, gtPriorMtd);
 
@@ -1613,15 +1616,7 @@
                 const elChanMtShare = document.getElementById('dash-kpi-chan-mt-share');
                 if (elChanMtShare) elChanMtShare.innerText = t('lbl_share') + ': ' + mtShare.toFixed(1) + '%';
                 const elChanMtTarget = document.getElementById('dash-kpi-chan-mt-target');
-                if (elChanMtTarget) {
-                    if (mtTarget > 0) {
-                        const achVal = (mtSellin / mtTarget * 100);
-                        const achStyle = getTargetColorStyle(achVal);
-                        elChanMtTarget.innerHTML = t('lbl_target') + ': ' + formatBnVn(mtTarget) + ' (<span style="' + achStyle + '">' + t('lbl_achv') + ' ' + achVal.toFixed(1) + '%</span>)';
-                    } else {
-                        elChanMtTarget.innerText = 'Target: N/A';
-                    }
-                }
+                if (elChanMtTarget) elChanMtTarget.innerHTML = formatChannelTargetHtml(mtTarget, mtSellin);
                 setChanGrowth('dash-kpi-chan-mt', mtSellin, mtSellinLY, mtYtd26, mtYtd25);
                 setChanMom('dash-kpi-chan-mt', mtMomMtdPct, mtPriorMtd);
 
@@ -1631,15 +1626,7 @@
                 const elChanB2bShare = document.getElementById('dash-kpi-chan-b2b-share');
                 if (elChanB2bShare) elChanB2bShare.innerText = t('lbl_share') + ': ' + b2bShare.toFixed(1) + '%';
                 const elChanB2bTarget = document.getElementById('dash-kpi-chan-b2b-target');
-                if (elChanB2bTarget) {
-                    if (b2bTarget > 0) {
-                        const achVal = (b2bSellin / b2bTarget * 100);
-                        const achStyle = getTargetColorStyle(achVal);
-                        elChanB2bTarget.innerHTML = t('lbl_target') + ': ' + formatBnVn(b2bTarget) + ' (<span style="' + achStyle + '">' + t('lbl_achv') + ' ' + achVal.toFixed(1) + '%</span>)';
-                    } else {
-                        elChanB2bTarget.innerText = 'Target: N/A';
-                    }
-                }
+                if (elChanB2bTarget) elChanB2bTarget.innerHTML = formatChannelTargetHtml(b2bTarget, b2bSellin);
                 setChanGrowth('dash-kpi-chan-b2b', b2bSellin, b2bSellinLY, b2bYtd26, b2bYtd25);
                 setChanMom('dash-kpi-chan-b2b', b2bMomMtdPct, b2bPriorMtd);
 
@@ -1649,15 +1636,7 @@
                 const elChanKrShare = document.getElementById('dash-kpi-chan-kr-share');
                 if (elChanKrShare) elChanKrShare.innerText = t('lbl_share') + ': ' + krShare.toFixed(1) + '%';
                 const elChanKrTarget = document.getElementById('dash-kpi-chan-kr-target');
-                if (elChanKrTarget) {
-                    if (krTarget > 0) {
-                        const achVal = (krSellin / krTarget * 100);
-                        const achStyle = getTargetColorStyle(achVal);
-                        elChanKrTarget.innerHTML = t('lbl_target') + ': ' + formatBnVn(krTarget) + ' (<span style="' + achStyle + '">' + t('lbl_achv') + ' ' + achVal.toFixed(1) + '%</span>)';
-                    } else {
-                        elChanKrTarget.innerText = 'Target: N/A';
-                    }
-                }
+                if (elChanKrTarget) elChanKrTarget.innerHTML = formatChannelTargetHtml(krTarget, krSellin);
                 setChanGrowth('dash-kpi-chan-kr', krSellin, krSellinLY, krYtd26, krYtd25);
                 setChanMom('dash-kpi-chan-kr', krMomMtdPct, krPriorMtd);
 
