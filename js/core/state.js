@@ -605,23 +605,26 @@
 
 
 
-            if (state.prodStorage !== 'ALL' && d.storage && d.storage !== state.prodStorage) return false;
+            if (state.prodStorage !== 'ALL' && (d.storage || 'ALL') !== state.prodStorage) return false;
 
 
 
-            if (state.prodCate !== 'ALL' && d.cate && d.cate !== state.prodCate) return false;
+            if (state.prodCate !== 'ALL' && (d.cate || 'ALL') !== state.prodCate) return false;
 
 
 
-            if (state.prodPh1 !== 'ALL' && d.ph1 && d.ph1 !== state.prodPh1) return false;
+            if (state.prodPh1 !== 'ALL' && (d.ph1 || 'ALL') !== state.prodPh1) return false;
 
 
 
-            if (state.prodPh2 !== 'ALL' && d.ph2 && d.ph2 !== state.prodPh2) return false;
+            if (state.prodPh2 !== 'ALL' && (d.ph2 || 'ALL') !== state.prodPh2) return false;
 
 
 
-            if (state.prodSku !== 'ALL' && (d.sku_name || d.sku || d.product_name) && (d.sku_name || d.sku || d.product_name) !== state.prodSku) return false;
+            if (state.prodSku !== 'ALL') {
+                const sku = d.sku_name || d.sku || d.product_name;
+                if (!sku || sku !== state.prodSku) return false;
+            }
 
 
 

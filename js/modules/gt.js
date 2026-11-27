@@ -1699,6 +1699,18 @@
 
 
 
+                } else if (isProdSubFiltered) {
+
+
+
+                    const l3mMonthKey = (state.selectedMonths.length === 1) ? currMonthKey : (state.year + '-' + state.selectedMonths[state.selectedMonths.length - 1]);
+                    const baseAso = getGtAsoActive(l3mMonthKey, targetStorage, state.geoMien, state.geoVung, state.geoGsbh, state.geoNpp);
+                    const baseL3m = getGtL3mAso(l3mMonthKey, targetStorage, state.geoMien, state.geoVung, state.geoGsbh, state.geoNpp);
+                    const ratio = (baseAso > 0 && baseL3m >= baseAso) ? (baseL3m / baseAso) : 1.35;
+                    totalL3mAso = Math.round(totalAso * ratio);
+
+
+
                 } else if (state.selectedMonths.length === 1) {
 
 
@@ -2253,7 +2265,10 @@
 
 
 
-                if (elAsoMcp) elAsoMcp.innerText = formatNumVn(totalAso) + ' / ' + formatNumVn(totalMcp);
+                if (elAsoMcp) {
+                    elAsoMcp.innerText = formatNumVn(totalAso) + ' / ' + formatNumVn(totalMcp);
+                    elAsoMcp.title = 'Điểm bán Active mua hàng (ASO: ' + formatNumVn(totalAso) + ') / Tuyến viếng thăm chuẩn Sales GT (MCP: ' + formatNumVn(totalMcp) + ')\nTỷ lệ bao phủ tuyến (Strike Rate): ' + strikeRate.toFixed(1) + '%';
+                }
 
 
 
@@ -2289,7 +2304,10 @@
 
 
 
-                if (elL3mAso) elL3mAso.innerText = formatNumVn(totalL3mAso);
+                if (elL3mAso) {
+                    elL3mAso.innerText = formatNumVn(totalL3mAso);
+                    elL3mAso.title = 'Điểm bán Active luân chuyển 3 tháng (L3M ASO): ' + formatNumVn(totalL3mAso);
+                }
 
 
 
@@ -3291,6 +3309,17 @@
 
 
                         l3m_cnt = Math.round(aso_cnt * 1.35);
+
+
+
+                    } else if (isProdSubFiltered) {
+
+
+
+                        const baseAso = getGtAsoActive(m, targetStorage, state.geoMien, state.geoVung, state.geoGsbh, state.geoNpp);
+                        const baseL3m = getGtL3mAso(m, targetStorage, state.geoMien, state.geoVung, state.geoGsbh, state.geoNpp);
+                        const ratio = (baseAso > 0 && baseL3m >= baseAso) ? (baseL3m / baseAso) : 1.35;
+                        l3m_cnt = Math.round(aso_cnt * ratio);
 
 
 
