@@ -4701,42 +4701,57 @@
             }
 
             (async () => {
-                // STAGE 1: Load lightweight summary cubes (~180ms) with high priority (concurrency=6)
-                if (missingStage1.length > 0 && typeof window.preloadPayloadsParallel === 'function') {
-                    _showFastLoader(15);
-                    await window.preloadPayloadsParallel(stage1Payloads, (pct) => _showFastLoader(Math.round(pct * 0.6)), 6, () => seq !== _renderTabSeq);
-                }
-                if (seq !== _renderTabSeq) return;
+                try {
+                    // STAGE 1: Load lightweight summary cubes (~180ms) with high priority (concurrency=6)
+                    if (missingStage1.length > 0 && typeof window.preloadPayloadsParallel === 'function') {
+                        _showFastLoader(15);
+                        await window.preloadPayloadsParallel(stage1Payloads, (pct) => _showFastLoader(Math.round(pct * 0.6)), 6, () => seq !== _renderTabSeq);
+                    }
+                    if (seq !== _renderTabSeq) {
+                        _hideFastLoader();
+                        return;
+                    }
 
-                if (!window._dropdownsInitialized && _payloadCache['DIM_COMM_HIER'] && _payloadCache['DIM_PROD_HIER'] && _payloadCache['DIM_GEO_HIER']) {
-                    window._dropdownsInitialized = true;
-                    try { initDropdowns(); applyUrlParams(); } catch (_) {}
-                }
+                    if (!window._dropdownsInitialized && _payloadCache['DIM_COMM_HIER'] && _payloadCache['DIM_PROD_HIER'] && _payloadCache['DIM_GEO_HIER']) {
+                        window._dropdownsInitialized = true;
+                        try { initDropdowns(); applyUrlParams(); } catch (_) {}
+                    }
 
-                const stillMissingStage2 = stage2Payloads.filter(p => !_payloadCache[p]);
-                if (stillMissingStage2.length > 0) {
-                    window._isStage1Render = true;
-                    try {
-                        _executeActiveTabRenderNow();
-                        setTimeout(resizeAllCharts, 50);
-                    } finally {
+                    const stillMissingStage2 = stage2Payloads.filter(p => !_payloadCache[p]);
+                    if (stillMissingStage2.length > 0) {
+                        window._isStage1Render = true;
+                        try {
+                            _executeActiveTabRenderNow();
+                            setTimeout(resizeAllCharts, 50);
+                        } finally {
+                            window._isStage1Render = false;
+                        }
+                        _hideFastLoader();
+
+                        // STAGE 2: Load deep daily/SKU cubes using only 2 connections so 4 connections stay free for instant tab switching!
+                        if (typeof window.preloadPayloadsParallel === 'function') {
+                            await window.preloadPayloadsParallel(stage2Payloads, null, 2, () => seq !== _renderTabSeq);
+                        }
+                        if (seq !== _renderTabSeq) {
+                            _hideFastLoader();
+                            return;
+                        }
                         window._isStage1Render = false;
+                        _executeActiveTabRenderNow();
+                        setTimeout(resizeAllCharts, 150);
+                    } else {
+                        _hideFastLoader();
+                        window._isStage1Render = false;
+                        _executeActiveTabRenderNow();
+                        setTimeout(resizeAllCharts, 150);
                     }
-                    _hideFastLoader();
-
-                    // STAGE 2: Load deep daily/SKU cubes using only 2 connections so 4 connections stay free for instant tab switching!
-                    if (typeof window.preloadPayloadsParallel === 'function') {
-                        await window.preloadPayloadsParallel(stage2Payloads, null, 2, () => seq !== _renderTabSeq);
-                    }
-                    if (seq !== _renderTabSeq) return;
-                    window._isStage1Render = false;
-                    _executeActiveTabRenderNow();
-                    setTimeout(resizeAllCharts, 150);
-                } else {
+                } catch (err) {
+                    console.error("Error loading payloads in renderActiveTab:", err);
                     _hideFastLoader();
                     window._isStage1Render = false;
-                    _executeActiveTabRenderNow();
-                    setTimeout(resizeAllCharts, 150);
+                    try { _executeActiveTabRenderNow(); } catch (_) {}
+                } finally {
+                    setTimeout(() => _hideFastLoader(), 500);
                 }
             })();
         }
