@@ -1598,9 +1598,6 @@
                     } else {
                         return '<span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-medium text-slate-400 font-mono-num leading-tight whitespace-nowrap">' + t('lbl_target') + ': N/A</span>';
                     }
-                } else {
-                        return '<span class="text-[10px] font-medium text-slate-400 font-mono-num leading-tight">' + t('lbl_target') + ': N/A</span>';
-                    }
                 }
 
                 // Card 5: GT
