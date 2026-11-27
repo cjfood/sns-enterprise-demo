@@ -738,7 +738,7 @@
                         }
                         try {
                             const xhr = new XMLHttpRequest();
-                            xhr.open('GET', '/data_payloads/' + propName + '.enc?v=' + _IDB_NAME, false);
+                            xhr.open('GET', 'data_payloads/' + propName + '.enc?v=' + _IDB_NAME, false);
                             if (xhr.overrideMimeType) {
                                 xhr.overrideMimeType('text/plain; charset=x-user-defined');
                             }

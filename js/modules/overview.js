@@ -1593,9 +1593,12 @@
                     if (targetVal > 0) {
                         const achVal = (sellinVal / targetVal * 100);
                         const achStyle = getTargetColorStyle(achVal);
-                        return '<span class="text-[9.5px] font-medium text-slate-500 font-mono-num leading-tight truncate max-w-full">' + t('lbl_target') + ': ' + formatBnVn(targetVal) + '</span>' +
-                               '<span class="text-[10px] font-bold font-mono-num leading-tight mt-0.5 whitespace-nowrap" style="' + achStyle + '">' + t('lbl_achv') + ' ' + achVal.toFixed(1) + '%</span>';
+                        return '<span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-medium text-slate-500 font-mono-num leading-tight whitespace-nowrap">' + t('lbl_target') + ': ' + formatBnVn(targetVal) + '</span>' +
+                               '<span class="text-[9.5px] sm:text-[10px] xl:text-[10.5px] font-bold font-mono-num leading-tight mt-0.5 whitespace-nowrap" style="' + achStyle + '">(' + t('lbl_achv') + ' ' + achVal.toFixed(1) + '%)</span>';
                     } else {
+                        return '<span class="text-[9px] sm:text-[9.5px] xl:text-[10px] font-medium text-slate-400 font-mono-num leading-tight whitespace-nowrap">' + t('lbl_target') + ': N/A</span>';
+                    }
+                } else {
                         return '<span class="text-[10px] font-medium text-slate-400 font-mono-num leading-tight">' + t('lbl_target') + ': N/A</span>';
                     }
                 }
